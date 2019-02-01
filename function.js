@@ -1,5 +1,8 @@
+//saved stock list
 const stockList = [];
 
+
+//append block containing fetched stock data, called by pullStockInfo
 const render = function (infoBox) {
     const template = $("<div>");
     template.addClass("col-sm-6");
@@ -8,13 +11,13 @@ const render = function (infoBox) {
     return;
 }
 
+//create block containing fetched stock data, used in render
 const infoBoxCreator = function (logo, name, price, news) {
     const template = $("<div>");
     template.addClass("infoBox");
     const companyLogo = `<img src="${logo}" alt="logo" class="logo"/>`;
     const companyName = `<h1 class="companyName">${name}</h1>`;
     const stockPrice = `<h2 class="stockPrice">Latest Price: $${price}</h2>`;
-    // const companyNews = newsCreator(news);
 
 
     template.append(`${companyLogo}${companyName}${stockPrice}`);
@@ -23,7 +26,7 @@ const infoBoxCreator = function (logo, name, price, news) {
         const singleBlock = $("<a>");
         const headline = `<h3 class="headline">${news[i].headline}</h3>`;
         const source = `<h4 class="source">Source: ${news[i].source}</h4>`;
-        const summary = `<p class="summary">${news[i].summary}</p2>`;
+        const summary = `<p class="summary">Summary: ${news[i].summary}</p2>`;
         const url = news[i].url;
         singleBlock.attr("href", `${url}`);
         singleBlock.append(`${headline}${source}${summary}`);
@@ -34,6 +37,7 @@ const infoBoxCreator = function (logo, name, price, news) {
 
 }
 
+//execute on stock button click, fetch and pass data from api to infoBoxCreator which are then used in render
 const pullStockInfo = function () {
     const symbol = $(this).attr("data-name");
     const domainURL = `https://api.iextrading.com/1.0/stock/`;
@@ -52,6 +56,8 @@ const pullStockInfo = function () {
     })
 }
 
+//execute on add button click, fetch symbol list from api and compare user input to list, if match found, push 
+//symbol to stockList then render stockList as individual buttons to the page, each with unique attribute of data name.
 const addButton = function () {
     event.preventDefault();
     const symbol = $("#searchBar").val().trim();
@@ -76,6 +82,8 @@ const addButton = function () {
 
 }
 
+
+//listeners
 $("#searchButton").click(addButton);
 
 $("#buttonBar").on("click", ".stockButtons", pullStockInfo);
