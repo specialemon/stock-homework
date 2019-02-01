@@ -1,0 +1,62 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0, 10%;
+    background: cadetblue;
+    background-size: cover;
+}
+
+.container {
+    background: #dee2e6;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+#buttonBar {
+    /* border: 5px solid cadetblue; */
+    border-radius: 10px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+#infoSection {
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+
+#buttonBar .stockButtons {
+    margin: 2% 2%;
+}
+
+.row .infoBox {
+    margin-top: 5%;
+}
+
+#infoSection .infoBox {
+    background: white;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 2%;
+}
+
+#infoSection .infoBox .companyName,
+#infoSection .infoBox a .headline
+#infoSection .infoBox a .source
+#infoSection .infoBox a .summary {
+    font-family : Arial, Helvetica, sans-serif;
+}
+
+#infoSection .infoBox a .headline {
+    border-top: 3px solid grey;
+}
+
+
+
+
+
+
+
+
